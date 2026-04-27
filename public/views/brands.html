@@ -1,0 +1,68 @@
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Brands</h1>
+    <p class="page-subtitle">Manage new Brands</p>
+  </div>
+  <button class="btn-primary-action" id="btnNuevaMarca">
+    <i class="bi bi-plus-lg"></i> New Brand
+  </button>
+</div>
+
+<div class="search-bar-row">
+  <div class="search-input-wrap">
+    <i class="bi bi-search search-icon"></i>
+    <input type="text" id="searchMarca" class="search-input" placeholder="Buscar marca…" />
+  </div>
+  <button class="btn-icon-outline" id="btnRefreshMarcas" title="Recargar">
+    <i class="bi bi-arrow-clockwise"></i>
+  </button>
+</div>
+
+<div class="card-panel">
+  <div class="table-responsive">
+    <table class="table-custom">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Brands name</th>
+          <th>Brands usage</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="bodyMarcas">
+        <tr><td colspan="4" class="text-center py-5"><div class="spinner-custom"></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-footer">
+    <span class="text-muted text-sm" id="totalMarcasLabel">Loading…</span>
+  </div>
+</div>
+
+<!-- ══ MODAL MARCA (local a esta vista) ══ -->
+<div class="modal-overlay" id="modalMarcaOverlay">
+  <div class="modal-panel modal-sm">
+    <div class="modal-header-custom">
+      <div>
+        <div class="modal-title-custom" id="modalMarcaTitle">New Brand</div>
+        <div class="modal-subtitle">Insert the brands name</div>
+      </div>
+      <button class="btn-modal-close" id="btnCloseModalMarca"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="modal-body-custom">
+      <form id="formMarca" novalidate>
+        <input type="hidden" id="marcaId" />
+        <label class="form-label-custom">Brands name <span class="required">*</span></label>
+        <input type="text" id="mNombre" class="input-custom" placeholder="Ej: Samsung" maxlength="100" required />
+        <div class="field-error" id="err-mNombre"></div>
+      </form>
+    </div>
+    <div class="modal-footer-custom">
+      <button class="btn-cancel" id="btnCancelMarca">Cancel</button>
+      <button class="btn-save"   id="btnSaveMarca">
+        <span id="btnSaveMarcaText"><i class="bi bi-check-lg me-1"></i> Save</span>
+        <span id="btnSaveMarcaSpinner" class="d-none"><div class="spinner-sm"></div></span>
+      </button>
+    </div>
+  </div>
+</div>
