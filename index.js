@@ -18,6 +18,7 @@ app.use('/',require('./public/controller'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 //
+
 //app.get('/{*path}', (req, res) => {
 //    res.sendFile(path.join(__dirname,'public', 'index.html'));
 //});
