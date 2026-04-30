@@ -1,0 +1,85 @@
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Storages</h1>
+        <p class="page-subtitle">Manage storages</p>
+    </div>
+    <button class="btn-primary-action" id="btnNuevoStorage">
+        <i class="bi bi-plus-lg"></i> New Storage
+    </button>
+</div>
+
+<div class="search-bar-row">
+    <div class="search-input-wrap">
+        <i class="bi bi-search search-icon"></i>
+        <input type="text" id="searchStorage" class="search-input" placeholder="Buscar almacén…" />
+    </div>
+    <button class="btn-icon-outline" id="btnRefreshStorage" title="Recargar">
+        <i class="bi bi-arrow-clockwise"></i>
+    </button>
+</div>
+
+<div class="card-panel">
+    <div class="table-responsive">
+        <table class="table-custom">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="bodyStorage">
+            <tr><td colspan="3" class="text-center py-5"><div class="spinner-custom"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-footer">
+        <span class="text-muted text-sm" id="totalStorageLabel">Loading…</span>
+    </div>
+</div>
+
+<!-- MODAL STORAGE -->
+<div class="modal-overlay" id="modalStorageOverlay">
+    <div class="modal-panel modal-sm">
+        <div class="modal-header-custom">
+            <div>
+                <div class="modal-title-custom" id="modalStorageTitle">New Storage</div>
+                <div class="modal-subtitle">Insert storage info</div>
+            </div>
+            <button class="btn-modal-close" id="btnCloseModalStorage">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <div class="modal-body-custom">
+            <form id="formStorage" novalidate>
+                <input type="hidden" id="storageId" />
+
+                <label class="form-label-custom">
+                    Address <span class="required">*</span>
+                </label>
+                <input
+                        type="text"
+                        id="sAddress"
+                        class="input-custom"
+                        placeholder="Ej: Almacén principal"
+                        maxlength="100"
+                        required
+                />
+                <div class="field-error" id="err-sAddress"></div>
+            </form>
+        </div>
+
+        <div class="modal-footer-custom">
+            <button class="btn-cancel" id="btnCancelStorage">Cancel</button>
+            <button class="btn-save" id="btnSaveStorage">
+        <span id="btnSaveStorageText">
+          <i class="bi bi-check-lg me-1"></i> Save
+        </span>
+                <span id="btnSaveStorageSpinner" class="d-none">
+          <div class="spinner-sm"></div>
+        </span>
+            </button>
+        </div>
+    </div>
+</div>

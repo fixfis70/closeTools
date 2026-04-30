@@ -45,6 +45,13 @@ const ROUTES = {
   proveedores: {
     title: 'Proveedores',
     view: '/views/proveedores.html',
+    module: () => ProveedoresModule,
+
+    storages: {
+      titulo: 'storages',
+      view: '/views/storages.html',
+      module: () => storagesModulo,
+    }
 
   },
   brands: {

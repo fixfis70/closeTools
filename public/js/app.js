@@ -18,7 +18,8 @@ const AppState = {
   productos: [],
   marcas:    [],
   clientes:  [],
-  proveedors:  [],
+  proveedor:  [],
+  storages: [],
   brands: [],
   deleteTarget: { type: null, id: null, name: null, onConfirm: null },
 };
@@ -73,6 +74,8 @@ const DeleteModal = {
     const msgs = {
       producto: `¿Eliminar el producto "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
       marca:    `¿Eliminar la marca "<strong>${escapeHtml(name)}</strong>"? Solo se puede si no tiene productos asociados.`,
+      proveedor: `¿Eliminar el proveedor "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
+      storage: `¿Eliminar el storage "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
     };
     document.getElementById('deleteMessage').innerHTML = msgs[type] || '¿Confirmar eliminación?';
     openOverlay('modalDeleteOverlay');
@@ -92,6 +95,8 @@ function updateBadges() {
   setText('badge-productos', AppState.productos.length);
   setText('badge-marcas',    AppState.marcas.length);
   setText('badge-brands',    AppState.marcas.length);
+  setText('badge-storages',  AppState.storages.length);
+  setText('badge-proveedores', AppState.proveedors.length);
 }
 
 /* ════════════════════════════════════════════

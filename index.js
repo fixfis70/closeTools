@@ -13,7 +13,9 @@ app.use('/api/roles', require('./routes/Roles'));
 app.use('/api/brand', require('./routes/Brand'));
 app.use('/api/provieder', require('./routes/Provieder'));
 app.use('/api/storages', require('./routes/storages'));
+
 app.use('/',require('./public/controller'));
+
 app.use(express.static(path.join(__dirname, 'public')));
 //
 //app.get('/{*path}', (req, res) => {
