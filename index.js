@@ -9,10 +9,18 @@ app.use(cors());
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
-app.use('/api/roles', require('./routes/Roles'));
+app.use('/api/asigroles', require('./routes/AsigRoles'));
 app.use('/api/brand', require('./routes/Brand'));
+app.use('/api/credentials', require('./routes/Credentials'));
+app.use('/api/loan', require('./routes/Loan'));
+app.use('/api/locker', require('./routes/Locker'));
 app.use('/api/provieder', require('./routes/Provieder'));
-app.use('/api/storages', require('./routes/storages'));
+app.use('/api/receipts', require('./routes/Receipts'));
+app.use('/api/roles', require('./routes/Roles'));
+app.use('/api/storages', require('./routes/Storages'));
+app.use('/api/tools', require('./routes/Tools'));
+app.use('/api/tool-loans', require('./routes/ToolsLoan'));
+app.use('/api/workers', require('./routes/Workers'));
 
 app.use('/',require('./public/controller'));
 
