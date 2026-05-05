@@ -20,9 +20,9 @@ const DashboardModule = {
 
   async load() {
     try {
-      const [resP, resM] = await Promise.all([
-        http('/api/productos'),
-        http('/api/marcas'),
+      const [resP,resM] = await Promise.all([
+        http('/api/model'),
+        http('/api/brand'),
       ]);
 
       AppState.productos = resP.data;

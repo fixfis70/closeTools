@@ -27,32 +27,15 @@ const ROUTES = {
     view:   '/views/dashboard.html',   // HTML de la vista
     module: () => DashboardModule,     // Módulo JS que la controla
   },
-  productos: {
-    title:  'Productos',
-    view:   '/views/productos.html',
-    module: () => ProductosModule,
-  },
-  marcas: {
-    title:  'Marcas',
-    view:   '/views/marcas.html',
-    module: () => MarcasModule,
-  },
-  clientes: {
-    title: 'Clientes',
-    view: '/views/clientes.html',
-    module: () => ClientesModule,
-  },
   proveedores: {
     title: 'Proveedores',
     view: '/views/proveedores.html',
     module: () => ProveedoresModule,
-
-    storages: {
-      titulo: 'storages',
-      view: '/views/storages.html',
-      module: () => storagesModulo,
-    }
-
+  },
+  storages: {
+    titulo: 'storages',
+    view: '/views/storages.html',
+    module: () => StoragesModule,
   },
   brands: {
     title: 'Brands',

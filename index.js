@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/asigroles', require('./routes/AsigRoles'));
 app.use('/api/brand', require('./routes/Brand'));
+app.use('/api/model', require('./routes/Models'));
 app.use('/api/credentials', require('./routes/Credentials'));
 app.use('/api/loan', require('./routes/Loan'));
 app.use('/api/locker', require('./routes/Locker'));
