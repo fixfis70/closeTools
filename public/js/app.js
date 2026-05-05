@@ -94,7 +94,7 @@ const DeleteModal = {
 function updateBadges() {
   setText('badge-productos', AppState.productos.length);
   setText('badge-marcas',    AppState.marcas.length);
-  setText('badge-brands',    AppState.marcas.length);
+  setText('badge-brands',    AppState.brands.length);
   setText('badge-storages',  AppState.storages.length);
   setText('badge-proveedores', AppState.proveedors.length);
 }

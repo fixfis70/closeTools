@@ -18,7 +18,7 @@ const BrandModule = {
 
     try {
       const { data } = await http('/api/brand');
-      AppState.marcas = data;
+      AppState.brands = data;
       this._render(data);
       updateBadges();
     } catch (e) {
@@ -62,7 +62,7 @@ const BrandModule = {
 
   _filter() {
     const search = document.getElementById('searchMarca')?.value.toLowerCase() || '';
-    this._render(AppState.marcas.filter(m =>
+    this._render(AppState.brands.filter(m =>
       m.brand.toLowerCase().includes(search)
     ));
   },
@@ -78,7 +78,7 @@ const BrandModule = {
   },
 
   openEdit(id) {
-    const marca = AppState.marcas.find(m => m.id_brand === id);
+    const marca = AppState.brands.find(m => m.id_brand === id);
     if (!marca) return showToast('Marca no encontrada', 'error');
     this._openModal('edit', marca);
   },

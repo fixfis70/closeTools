@@ -32,6 +32,11 @@ const ROUTES = {
     view: '/views/proveedores.html',
     module: () => ProveedoresModule,
   },
+  models: {
+    title: 'Models',
+    view: '/views/models.html',
+    module: () => ModelModule,
+  },
   storages: {
     titulo: 'storages',
     view: '/views/storages.html',

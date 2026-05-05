@@ -26,7 +26,7 @@ const DashboardModule = {
       ]);
 
       AppState.productos = resP.data;
-      AppState.marcas    = resM.data;
+      AppState.brands    = resM.data;
       updateBadges();
 
       this._renderStats();
@@ -43,7 +43,7 @@ const DashboardModule = {
     const prom  = ps.length ? suma / ps.length : 0;
 
     setText('stat-total-productos', ps.length);
-    setText('stat-total-marcas',    AppState.marcas.length);
+    setText('stat-total-marcas',    AppState.brands.length);
     setText('stat-valor-total',     'S/. ' + formatPrecio(suma));
     setText('stat-precio-promedio', 'S/. ' + formatPrecio(prom));
   },
