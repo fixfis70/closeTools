@@ -59,9 +59,16 @@ const ModuleTool = {
                     <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text-muted)">${String(i + 1).padStart(2, '0')}</span></td>
                     
                     <!-- TODO data rows -->
+                    <td><span>${escapeHtml(m.serial)}</span></td>
+                    <td><span>${escapeHtml(m.inv_code)}</span></td>
+                    <td><span>${escapeHtml(m.state)}</span></td>
+                    <td><span>${escapeHtml(m.oos_reason)}</span></td>
+                    <td><span>${escapeHtml(m.purchase_cost)}</span></td>
+                    <td><span>${escapeHtml(m.purchase_date)}</span></td>
+                    <td><span>${escapeHtml(m.oss_responsable)}</span></td>
                     <td><span>${escapeHtml(m.model)}</span></td>
-                    <td><span>${escapeHtml(m.kind_of_tool)}</span></td>
-                    <td><span>${escapeHtml(m.brand)}</span></td>
+                    <td><span>${escapeHtml(m.id_receipt)}</span></td>
+                    <td><span>${escapeHtml(m.storage)}</span></td>
                     <!-- TODO data rows -->
 
                     <td>

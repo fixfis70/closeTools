@@ -19,7 +19,7 @@ app.use('/api/provieder', require('./routes/Provieder'));
 app.use('/api/receipt', require('./routes/Receipts'));
 app.use('/api/role', require('./routes/Roles'));
 app.use('/api/storages', require('./routes/Storages'));
-app.use('/api/tools', require('./routes/Tools'));
+app.use('/api/tool', require('./routes/Tools'));
 app.use('/api/tool-loans', require('./routes/ToolsLoan'));
 app.use('/api/worker', require('./routes/Workers'));
 
