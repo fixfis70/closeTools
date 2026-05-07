@@ -22,6 +22,21 @@
    Agregar aquí cada nueva vista.
 ════════════════════════════════════════════ */
 const ROUTES = {
+  tool: {
+    title: "Herramientas",
+    view: "views/tool.html",
+    module: () => ModuleTool
+  },
+  locker: {
+    title: "Lockers",
+    view: "views/locker.html",
+    module: () => ModuleLocker
+  },
+  receipt: {
+    title: "Recibo",
+    view: "/views/receipts.html",
+    module: () => ModuleReceipt,
+  },
   credentials: {
     title: "Credenciales",
     view : "/views/credentials.html",

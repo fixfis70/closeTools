@@ -15,6 +15,9 @@
    datos sin repetir peticiones al servidor.
 ════════════════════════════════════════════ */
 const AppState = {
+    tool: [],
+    locker: [],
+    receipt: [],
     credentials: [],
     worker: [],
     role:[],
@@ -76,6 +79,9 @@ const DeleteModal = {
     open(type, id, name, onConfirm) {
         AppState.deleteTarget = {type, id, name, onConfirm};
         const msgs = {
+            tool: `¿Eliminar la herramienta "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
+            locker: `¿Eliminar el locker "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
+            receipt: `¿Eliminar el recibo del "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
             credentials: `¿Eliminar la credencial "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
             worker: `¿Eliminar el trabajador "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
             producto: `¿Eliminar el producto "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
@@ -100,6 +106,9 @@ const DeleteModal = {
    BADGES DE SIDEBAR
 ════════════════════════════════════════════ */
 function updateBadges() {
+    setText('badge-tool', AppState.locker.length);
+    setText('badge-locker', AppState.locker.length);
+    setText('badge-receipt', AppState.receipt.length);
     setText('badge-credentials', AppState.credentials.length);
     setText('badge-worker', AppState.worker.length);
     setText('badge-productos', AppState.productos.length);

@@ -1,4 +1,4 @@
-
+Model
 <div class="page-header">
     <div>
         <h1 class="page-title">@@-capName-@@</h1>
@@ -30,9 +30,8 @@
             <tr>
                 <!-- TODO encabezados -->
                 <th>#</th>
-                <th>Name</th>
-                <th>Kind</th>
-                <th>Brand</th>
+                <th>Locker</th>
+                <th>Lugar</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -63,17 +62,11 @@
         <div class="modal-body-custom">
             <!-- TODO formulario -->
             <form novalidate>
-                <input type="hidden" id="modelId"/>
+                <input type="hidden" id="receiptId"/>
 
-                <label class="form-label-custom">Model name <span class="required">*</span></label>
-                <input type="text" required class="input-custom" name="" id="modelname">
-
-                <label class="form-label-custom">Model Type <span class="required">*</span></label>
-                <input type="text" required class="input-custom" name="" id="modelkind">
-
-                <label class="form-label-custom">Brands ID <span class="required">*</span></label>
-                <input type="text" required class="input-custom" name="" id="modelbrandnid">
-
+                <label class="form-label-custom">Locker <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="receiptimg">
+                
                 <div class="field-error" id="err-mNombre"></div>
             </form>
         </div>

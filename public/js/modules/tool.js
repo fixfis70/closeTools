@@ -14,9 +14,9 @@
  * 4to en App buscar updateBadges y agregar esto
  */
 
-const moduleName = 'ModuleName';
+const moduleTool = 'tool';
 
-const Module = {
+const ModuleTool = {
 
     async init() {
         await this._generarPlantilla();
@@ -26,8 +26,8 @@ const Module = {
     },
     async _generarPlantilla() {
         const reemplazos = {
-            name: moduleName,
-            capName: capitalizar(moduleName),
+            name: moduleTool,
+            capName: capitalizar(moduleTool),
         };
         document.getElementById('pageContainer').innerHTML = document.getElementById('pageContainer').innerHTML.replace(
             /@@-(.*?)-@@/g,
@@ -36,19 +36,19 @@ const Module = {
     },
 
     async load() {
-        const {data} = await http(`/api/${moduleName}`);
+        const {data} = await http(`/api/${moduleTool}`);
         //TODO el caché
-        AppState.q@models = data;
+        AppState.tool = data;
         this._render(data);
         updateBadges();
     },
     //model
     _render(lista) {
-        setText(`total${capitalizar(moduleName)}Label`, `${lista.length} ${moduleName}(s) registrado(s)`);
-        const tbody = document.getElementById(`body${capitalizar(moduleName)}`);
+        setText(`total${capitalizar(moduleTool)}Label`, `${lista.length} ${moduleTool}(s) registrado(s)`);
+        const tbody = document.getElementById(`body${capitalizar(moduleTool)}`);
         if (!lista.length) {
             tbody.innerHTML = `<tr><td colspan="4"><div class="empty-state">
-                <i class="bi bi-bookmark-x"></i><p>No hay datos de ${moduleName} registrados/as</p>
+                <i class="bi bi-bookmark-x"></i><p>No hay datos de ${moduleTool} registrados/as</p>
             </div></td></tr>`;
             return;
         }
@@ -77,7 +77,7 @@ const Module = {
     },
 
     _filter() {
-        const search = document.getElementById(`search${capitalizar(moduleName)}`)?.value.toLowerCase() || '';
+        const search = document.getElementById(`search${capitalizar(moduleTool)}`)?.value.toLowerCase() || '';
         console.log(search)
         //TODO filtro, CAMBIAR EL CACHE
         this._render(AppState.q@models.filter(m =>
@@ -91,7 +91,7 @@ const Module = {
     /* ── Modal ───────────────────────────── */
     _openModal(mode, entidad = null) {
         const isEdit = mode === 'edit';
-        setText(`modal${capitalizar(moduleName)}Title`, isEdit ? `Editar ${moduleName}` : `Nueva ${moduleName}`);
+        setText(`modal${capitalizar(moduleTool)}Title`, isEdit ? `Editar ${moduleTool}` : `Nueva ${moduleTool}`);
         // TODO obtener los datos por el ID del MODAL (HTML)
         document.getElementById('modelId').value = isEdit ? entidad.id_model : '';
         document.getElementById('modelname').value = isEdit ? entidad.model : '';
@@ -101,19 +101,19 @@ const Module = {
         clearErrors(['modelkind']);
         clearErrors(['modelbrandnid']);
 
-        openOverlay(`modal${capitalizar(moduleName)}Overlay`);
+        openOverlay(`modal${capitalizar(moduleTool)}Overlay`);
     },
 
     openEdit(id) {
         const value = AppState.q@models.find(m => m.q@id_model === id);
-        if (!value) return showToast(`${capitalizar(moduleName)} no encontrada`, 'error');
+        if (!value) return showToast(`${capitalizar(moduleTool)} no encontrada`, 'error');
         this._openModal('edit', value);
     },
 
     confirmDel(id, name) {
-        DeleteModal.open(`${moduleName}`, id, name, async () => {
+        DeleteModal.open(`${moduleTool}`, id, name, async () => {
             try {
-                await http(`/api/${moduleName}/${id}`, 'DELETE');
+                await http(`/api/${moduleTool}/${id}`, 'DELETE');
                 showToast(`"${name}" eliminada correctamente`, 'success');
                 await this.load();
             } catch (e) {
@@ -137,11 +137,11 @@ const Module = {
             const data = {model: nombre, kind_of_tool: tipo, id_brand: marca}
             //TODO enviar los datos al servidor
 
-            const url = isEdit ? `/api/${moduleName}/${id}` : `/api/${moduleName}`
+            const url = isEdit ? `/api/${moduleTool}/${id}` : `/api/${moduleTool}`
             const method = isEdit ? 'PUT' : 'POST'
             const resp = await http(url, method, data)
-            showToast(`${capitalizar(moduleName)} ${isEdit ? 'actualizado' : 'creado'} correctamente`, 'success');
-            closeOverlay(`modal${capitalizar(moduleName)}Overlay`);
+            showToast(`${capitalizar(moduleTool)} ${isEdit ? 'actualizado' : 'creado'} correctamente`, 'success');
+            closeOverlay(`modal${capitalizar(moduleTool)}Overlay`);
             await this.load();
         } catch (e) {
             showToast(e.message, 'error');
@@ -149,13 +149,13 @@ const Module = {
     },
 
     _bindEvents() {
-        document.getElementById(`btnNew${capitalizar(moduleName)}`)?.addEventListener('click', () => this._openModal('new'));
-        document.getElementById(`btnSave${capitalizar(moduleName)}`)?.addEventListener('click', () => this._save());
-        document.getElementById(`btnClose${capitalizar(moduleName)}`)?.addEventListener('click', () => closeOverlay(`modal${capitalizar(moduleName)}Overlay`));
-        document.getElementById(`btnCloseModal${capitalizar(moduleName)}`)?.addEventListener('click', () => closeOverlay(`modal${capitalizar(moduleName)}Overlay`));
+        document.getElementById(`btnNew${capitalizar(moduleTool)}`)?.addEventListener('click', () => this._openModal('new'));
+        document.getElementById(`btnSave${capitalizar(moduleTool)}`)?.addEventListener('click', () => this._save());
+        document.getElementById(`btnClose${capitalizar(moduleTool)}`)?.addEventListener('click', () => closeOverlay(`modal${capitalizar(moduleTool)}Overlay`));
+        document.getElementById(`btnCloseModal${capitalizar(moduleTool)}`)?.addEventListener('click', () => closeOverlay(`modal${capitalizar(moduleTool)}Overlay`));
 
-        document.getElementById(`btnRefresh${capitalizar(moduleName)}`)?.addEventListener('click', () => this.load());
-        document.getElementById(`search${capitalizar(moduleName)}`)?.addEventListener('input',      () => this._filter());
+        document.getElementById(`btnRefresh${capitalizar(moduleTool)}`)?.addEventListener('click', () => this.load());
+        document.getElementById(`search${capitalizar(moduleTool)}`)?.addEventListener('input',      () => this._filter());
 
     },
 }

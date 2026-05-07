@@ -16,7 +16,7 @@ app.use('/api/credentials', require('./routes/Credentials'));
 app.use('/api/loan', require('./routes/Loan'));
 app.use('/api/locker', require('./routes/Locker'));
 app.use('/api/provieder', require('./routes/Provieder'));
-app.use('/api/receipts', require('./routes/Receipts'));
+app.use('/api/receipt', require('./routes/Receipts'));
 app.use('/api/role', require('./routes/Roles'));
 app.use('/api/storages', require('./routes/Storages'));
 app.use('/api/tools', require('./routes/Tools'));
