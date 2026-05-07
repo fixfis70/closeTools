@@ -15,13 +15,15 @@
    datos sin repetir peticiones al servidor.
 ════════════════════════════════════════════ */
 const AppState = {
-  productos: [],
-  marcas:    [],
-  clientes:  [],
-  proveedor:  [],
-  storages: [],
-  brands: [],
-  deleteTarget: { type: null, id: null, name: null, onConfirm: null },
+    role:[],
+    productos: [],
+    marcas: [],
+    models: [],
+    clientes: [],
+    proveedors: [],
+    storages: [],
+    brands: [],
+    deleteTarget: {type: null, id: null, name: null, onConfirm: null},
 };
 
 /* ════════════════════════════════════════════
@@ -29,9 +31,9 @@ const AppState = {
 ════════════════════════════════════════════ */
 const DeleteModal = {
 
-  /** Inyecta el HTML del modal en #modalsContainer */
-  render() {
-    document.getElementById('modalsContainer').innerHTML = `
+    /** Inyecta el HTML del modal en #modalsContainer */
+    render() {
+        document.getElementById('modalsContainer').innerHTML = `
       <div class="modal-overlay" id="modalDeleteOverlay">
         <div class="modal-panel modal-sm">
           <div class="modal-header-custom">
@@ -54,56 +56,60 @@ const DeleteModal = {
         </div>
       </div>`;
 
-    document.getElementById('btnConfirmDelete').addEventListener('click', () => this._execute());
-    document.getElementById('btnCancelDelete').addEventListener('click',  () => closeOverlay('modalDeleteOverlay'));
-    document.getElementById('btnCloseDelete').addEventListener('click',   () => closeOverlay('modalDeleteOverlay'));
-    document.getElementById('modalDeleteOverlay').addEventListener('click', e => {
-      if (e.target.id === 'modalDeleteOverlay') closeOverlay('modalDeleteOverlay');
-    });
-  },
+        document.getElementById('btnConfirmDelete').addEventListener('click', () => this._execute());
+        document.getElementById('btnCancelDelete').addEventListener('click', () => closeOverlay('modalDeleteOverlay'));
+        document.getElementById('btnCloseDelete').addEventListener('click', () => closeOverlay('modalDeleteOverlay'));
+        document.getElementById('modalDeleteOverlay').addEventListener('click', e => {
+            if (e.target.id === 'modalDeleteOverlay') closeOverlay('modalDeleteOverlay');
+        });
+    },
 
-  /**
-   * Abre el modal de confirmación.
-   * @param {string}   type      - 'producto' | 'marca'
-   * @param {number}   id
-   * @param {string}   name
-   * @param {Function} onConfirm - callback ejecutado al confirmar
-   */
-  open(type, id, name, onConfirm) {
-    AppState.deleteTarget = { type, id, name, onConfirm };
-    const msgs = {
-      producto: `¿Eliminar el producto "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
-      marca:    `¿Eliminar la marca "<strong>${escapeHtml(name)}</strong>"? Solo se puede si no tiene productos asociados.`,
-      proveedor: `¿Eliminar el proveedor "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
-      storage: `¿Eliminar el storage "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
-    };
-    document.getElementById('deleteMessage').innerHTML = msgs[type] || '¿Confirmar eliminación?';
-    openOverlay('modalDeleteOverlay');
-  },
+    /**
+     * Abre el modal de confirmación.
+     * @param {string}   type      - 'producto' | 'marca'
+     * @param {number}   id
+     * @param {string}   name
+     * @param {Function} onConfirm - callback ejecutado al confirmar
+     */
+    open(type, id, name, onConfirm) {
+        AppState.deleteTarget = {type, id, name, onConfirm};
+        const msgs = {
+            producto: `¿Eliminar el producto "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
+            role: `¿Eliminar el Rol "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
+            brand: `¿Eliminar la marca "<strong>${escapeHtml(name)}</strong>"? Solo se puede si no tiene productos asociados.`,
+            model: `¿Eliminar el modelo "<strong>${escapeHtml(name)}</strong>"? Solo se puede si no tiene productos asociados.`,
+            proveedor: `¿Eliminar el proveedor "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
+            storage: `¿Eliminar el storage "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
+        };
+        document.getElementById('deleteMessage').innerHTML = msgs[type] || '¿Confirmar eliminación?';
+        openOverlay('modalDeleteOverlay');
+    },
 
-  async _execute() {
-    const { onConfirm } = AppState.deleteTarget;
-    closeOverlay('modalDeleteOverlay');
-    if (typeof onConfirm === 'function') await onConfirm();
-  },
+    async _execute() {
+        const {onConfirm} = AppState.deleteTarget;
+        closeOverlay('modalDeleteOverlay');
+        if (typeof onConfirm === 'function') await onConfirm();
+    },
 };
 
 /* ════════════════════════════════════════════
    BADGES DE SIDEBAR
 ════════════════════════════════════════════ */
 function updateBadges() {
-  setText('badge-productos', AppState.productos.length);
-  setText('badge-marcas',    AppState.marcas.length);
-  setText('badge-brands',    AppState.brands.length);
-  setText('badge-storages',  AppState.storages.length);
-  setText('badge-proveedores', AppState.proveedors.length);
+    setText('badge-productos', AppState.productos.length);
+    setText('badge-marcas', AppState.marcas.length);
+    setText('badge-brands', AppState.brands.length);
+    setText('badge-role', AppState.role.length);
+    setText('badge-storages', AppState.storages.length);
+    setText('badge-proveedores', AppState.proveedors.length);
+    setText('badge-models',AppState.models.length)
 }
 
 /* ════════════════════════════════════════════
    ARRANQUE
 ════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
-  DeleteModal.render();
-  Router.init();
-  Router.navigateTo('dashboard');
+    DeleteModal.render();
+    Router.init();
+    Router.navigateTo('dashboard');
 });

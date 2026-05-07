@@ -88,3 +88,12 @@ function formatFecha(fechaStr) {
   const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
   return `${d} ${meses[parseInt(m, 10) - 1]} ${y}`;
 }
+
+function capitalizar(texto) {
+  if (!texto) return "";
+
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+// Ejemplo
+console.log(capitalizar("hola mundo")); // "Hola mundo"

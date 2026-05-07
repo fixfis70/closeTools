@@ -25,7 +25,7 @@ const DashboardModule = {
         http('/api/brand'),
       ]);
 
-      AppState.productos = resP.data;
+      AppState.models = resP.data;
       AppState.brands    = resM.data;
       updateBadges();
 

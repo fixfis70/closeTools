@@ -1,11 +1,12 @@
+Model
 <div class="page-header">
     <div>
-        <h1 class="page-title">Modelo</h1>
-        <p class="page-subtitle">Administra el modelo</p>
+        <h1 class="page-title">@@-capName-@@</h1>
+        <p class="page-subtitle">Manage @@-name-@@</p>
     </div>
     <!-- boton crear -->
-    <button class="btn-primary-action" id="btnNuevoModelo">
-        <i class="bi bi-plus-lg"></i> New Brand
+    <button class="btn-primary-action" id="btnNew@@-capName-@@">
+        <i class="bi bi-plus-lg"></i> New @@-capName-@@
     </button>
 </div>
 
@@ -14,9 +15,9 @@
 <div class="search-bar-row">
     <div class="search-input-wrap">
         <i class="bi bi-search search-icon"></i>
-        <input type="text" id="searchModel" class="search-input" placeholder="Buscar modelo…" />
+        <input type="text" id="search@@-capName-@@" class="search-input" placeholder="Buscar @@-name-@@…" />
     </div>
-    <button class="btn-icon-outline" id="btnRefreshModel" title="Recargar">
+    <button class="btn-icon-outline" id="btnRefresh@@-capName-@@" title="Recargar">
         <i class="bi bi-arrow-clockwise"></i>
     </button>
 </div>
@@ -27,7 +28,7 @@
         <table class="table-custom">
             <thead>
             <tr>
-                <!-- encabezados -->
+                <!-- TODO encabezados -->
                 <th>#</th>
                 <th>Name</th>
                 <th>Kind</th>
@@ -37,7 +38,7 @@
             </thead>
 
             <!-- el cuerpo -->
-            <tbody id="bodyModels">
+            <tbody id="body@@-capName-@@">
             <tr>
             <tr><td colspan="4" class="text-center py-5"><div class="spinner-custom"></div></td></tr>
             </tbody>
@@ -45,22 +46,22 @@
     </div>
     <!-- total de registros -->
     <div class="table-footer">
-        <span class="text-muted text-sm" id="totalModelLabel"> Loading...</span>
+        <span class="text-muted text-sm" id="total@@-capName-@@Label"> Loading...</span>
     </div>
 </div>
 
-<div class="modal-overlay" id="modalModelsOverlay">
+<div class="modal-overlay" id="modal@@-capName-@@Overlay">
     <div class="modal-panel modal-sm">
         <div class="modal-header-custom">
             <div>
                 <!-- encabezado -->
-                <div class="modal-title-custom" id="modalModelTitle">New Model</div>
-                <div class="modal-subtitle">Insert the model name</div>
+                <div class="modal-title-custom" id="modal@@-capName-@@Title">New @@-capName-@@</div>
+                <div class="modal-subtitle">Insert the @@-name-@@ name</div>
             </div>
-            <button class="btn-modal-close" id="btnCloseModalModel"><i class="bi bi-x-lg"></i></button>
+            <button class="btn-modal-close" id="btnCloseModal@@-capName-@@"><i class="bi bi-x-lg"></i></button>
         </div>
         <div class="modal-body-custom">
-            <!-- formulario -->
+            <!-- TODO formulario -->
             <form novalidate>
                 <input type="hidden" id="modelId"/>
 
@@ -79,10 +80,10 @@
 
         <!-- botones -->
         <div class="modal-footer-custom">
-            <button class="btn-cancel" id="btnmodel_close">Cancel</button>
-            <button class="btn-save"   id="btnmodel_save">
-                <span id="btnSaveModelText"><i class="bi bi-check-lg me-1"></i> Save</span>
-                <span id="btnSaveModelSpinner" class="d-none"><div class="spinner-sm"></div></span>
+            <button class="btn-cancel" id="btnClose@@-capName-@@">Cancel</button>
+            <button class="btn-save"   id="btnSave@@-capName-@@">
+                <span id="btnSave@@-capName-@@Text"><i class="bi bi-check-lg me-1"></i> Save</span>
+                <span id="btnSave@@-capName-@@Spinner" class="d-none"><div class="spinner-sm"></div></span>
             </button>
         </div>
     </div>

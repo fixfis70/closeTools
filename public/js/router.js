@@ -22,6 +22,11 @@
    Agregar aquí cada nueva vista.
 ════════════════════════════════════════════ */
 const ROUTES = {
+  role : {
+    title: 'Role',
+    view: '/views/role.html',
+    module: () => RoleModule,
+  },
   dashboard: {
     title:  'Dashboard',
     view:   '/views/dashboard.html',   // HTML de la vista
