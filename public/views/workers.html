@@ -1,0 +1,98 @@
+Model
+<div class="page-header">
+    <div>
+        <h1 class="page-title">@@-capName-@@</h1>
+        <p class="page-subtitle">Manage @@-name-@@</p>
+    </div>
+    <!-- boton crear -->
+    <button class="btn-primary-action" id="btnNew@@-capName-@@">
+        <i class="bi bi-plus-lg"></i> New @@-capName-@@
+    </button>
+</div>
+
+
+<!-- barra de busqueda -->
+<div class="search-bar-row">
+    <div class="search-input-wrap">
+        <i class="bi bi-search search-icon"></i>
+        <input type="text" id="search@@-capName-@@" class="search-input" placeholder="Buscar @@-name-@@…" />
+    </div>
+    <button class="btn-icon-outline" id="btnRefresh@@-capName-@@" title="Recargar">
+        <i class="bi bi-arrow-clockwise"></i>
+    </button>
+</div>
+
+<div class="card-panel">
+    <div class="table-responsive">
+        <!-- tabla -->
+        <table class="table-custom">
+            <thead>
+            <tr>
+                <!-- TODO encabezados -->
+                <th>#</th>
+                <th>Dni</th>
+                <th>Nombres</th>
+                <th>Rol</th>
+                <th>Area de trabajo</th>
+                <th>Jornada</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+
+            <!-- el cuerpo -->
+            <tbody id="body@@-capName-@@">
+            <tr>
+            <tr><td colspan="4" class="text-center py-5"><div class="spinner-custom"></div></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- total de registros -->
+    <div class="table-footer">
+        <span class="text-muted text-sm" id="total@@-capName-@@Label"> Loading...</span>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal@@-capName-@@Overlay">
+    <div class="modal-panel modal-sm">
+        <div class="modal-header-custom">
+            <div>
+                <!-- encabezado -->
+                <div class="modal-title-custom" id="modal@@-capName-@@Title">New @@-capName-@@</div>
+                <div class="modal-subtitle">Insert the @@-name-@@ name</div>
+            </div>
+            <button class="btn-modal-close" id="btnCloseModal@@-capName-@@"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body-custom">
+            <!-- TODO formulario -->
+            <form novalidate>
+                <input type="hidden" id="workerId"/>
+
+                <label class="form-label-custom">Dni <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="workerdni">
+
+                <label class="form-label-custom">Nombres <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="workername">
+
+                <label class="form-label-custom">Rol <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="workerrol">
+
+                <label class="form-label-custom">Area <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="workerarea">
+
+                <label class="form-label-custom">Jornada <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="workershift">
+
+                <div class="field-error" id="err-mNombre"></div>
+            </form>
+        </div>
+
+        <!-- botones -->
+        <div class="modal-footer-custom">
+            <button class="btn-cancel" id="btnClose@@-capName-@@">Cancel</button>
+            <button class="btn-save"   id="btnSave@@-capName-@@">
+                <span id="btnSave@@-capName-@@Text"><i class="bi bi-check-lg me-1"></i> Save</span>
+                <span id="btnSave@@-capName-@@Spinner" class="d-none"><div class="spinner-sm"></div></span>
+            </button>
+        </div>
+    </div>
+</div>

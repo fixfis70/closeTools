@@ -22,6 +22,16 @@
    Agregar aquí cada nueva vista.
 ════════════════════════════════════════════ */
 const ROUTES = {
+  credentials: {
+    title: "Credenciales",
+    view : "/views/credentials.html",
+    module : () => CredentialModule,
+  },
+  worker : {
+    title: 'Trabajadores',
+    view: '/views/workers.html',
+    module: () => WorkerModule,
+  },
   role : {
     title: 'Role',
     view: '/views/role.html',

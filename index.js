@@ -21,7 +21,7 @@ app.use('/api/role', require('./routes/Roles'));
 app.use('/api/storages', require('./routes/Storages'));
 app.use('/api/tools', require('./routes/Tools'));
 app.use('/api/tool-loans', require('./routes/ToolsLoan'));
-app.use('/api/workers', require('./routes/Workers'));
+app.use('/api/worker', require('./routes/Workers'));
 
 app.use('/',require('./public/controller'));
 

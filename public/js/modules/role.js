@@ -21,6 +21,7 @@ const RoleModule = {
     async init() {
         await this._generarPlantilla();
         //domir un rato
+        DeleteModal.render()
         this._bindEvents();
         await this.load();
     },
@@ -29,8 +30,7 @@ const RoleModule = {
             name: moduleName,
             capName: capitalizar(moduleName),
         };
-
-        document.body.innerHTML = document.body.innerHTML.replace(
+        document.getElementById('pageContainer').innerHTML = document.getElementById('pageContainer').innerHTML.replace(
             /@@-(.*?)-@@/g,
             (match, clave) => reemplazos[clave] || match
         );
@@ -107,7 +107,7 @@ const RoleModule = {
     },
 
     confirmDel(id, name) {
-        DeleteModal.open(moduleName, id, name, async () => {
+        DeleteModal.open(`${moduleName}`, id, name, async () => {
             try {
                 await http(`/api/${moduleName}/${id}`, 'DELETE');
                 showToast(`"${name}" eliminada correctamente`, 'success');
@@ -116,7 +116,6 @@ const RoleModule = {
                 showToast(e.message, 'error');
             }
         });
-
     },
 
     async _save() {
@@ -144,6 +143,7 @@ const RoleModule = {
         document.getElementById(`btnNew${capitalizar(moduleName)}`)?.addEventListener('click', () => this._openModal('new'));
         document.getElementById(`btnSave${capitalizar(moduleName)}`)?.addEventListener('click', () => this._save());
         document.getElementById(`btnClose${capitalizar(moduleName)}`)?.addEventListener('click', () => closeOverlay(`modal${capitalizar(moduleName)}Overlay`));
+        document.getElementById(`btnCloseModal${capitalizar(moduleName)}`)?.addEventListener('click', () => closeOverlay(`modal${capitalizar(moduleName)}Overlay`));
 
         document.getElementById(`btnRefresh${capitalizar(moduleName)}`)?.addEventListener('click', () => this.load());
         document.getElementById(`search${capitalizar(moduleName)}`)?.addEventListener('input', () => this._filter());

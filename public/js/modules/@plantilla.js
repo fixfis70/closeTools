@@ -8,10 +8,10 @@
  * como implementarlo:
  * 1ero verificar el hmtl y el modulo
  * 2do  ir a App y registar el caché
- * 4to en App buscar updateBadges y agregar esto
  * 4to en App buscar el delmodal y agregar este
  * 5to ir a route y registrar la ruta
  * 6to ir a  el index.html y agrregar el navBarItem y dependencias JS
+ * 4to en App buscar updateBadges y agregar esto
  */
 
 const moduleName = 'ModuleName';
@@ -21,17 +21,16 @@ const Module = {
     async init() {
         await this._generarPlantilla();
         //domir un rato
+        DeleteModal.render()
         this._bindEvents();
         await this.load();
     },
     async _generarPlantilla() {
         const reemplazos = {
-            name: moduleName,
-            capName: capitalizar(moduleName),
+            name: modulecredentials,
+            capName: capitalizar(modulecredentials),
         };
-
-        // Obtener todo el HTML del body
-        document.body.innerHTML = document.body.innerHTML.replace(
+        document.getElementById('pageContainer').innerHTML = document.getElementById('pageContainer').innerHTML.replace(
             /@@-(.*?)-@@/g,
             (match, clave) => reemplazos[clave] || match
         );
@@ -46,7 +45,7 @@ const Module = {
     },
     //model
     _render(lista) {
-        setText(`total${capitalizar(moduleName)}Label` `${lista.length} ${moduleName}(s) registrado(s)`);
+        setText(`total${capitalizar(moduleName)}Label`, `${lista.length} ${moduleName}(s) registrado(s)`);
         const tbody = document.getElementById(`body${capitalizar(moduleName)}`);
         if (!lista.length) {
             tbody.innerHTML = `<tr><td colspan="4"><div class="empty-state">
@@ -154,6 +153,7 @@ const Module = {
         document.getElementById(`btnNew${capitalizar(moduleName)}`)?.addEventListener('click', () => this._openModal('new'));
         document.getElementById(`btnSave${capitalizar(moduleName)}`)?.addEventListener('click', () => this._save());
         document.getElementById(`btnClose${capitalizar(moduleName)}`)?.addEventListener('click', () => closeOverlay(`modal${capitalizar(moduleName)}Overlay`));
+        document.getElementById(`btnCloseModal${capitalizar(moduleName)}`)?.addEventListener('click', () => closeOverlay(`modal${capitalizar(moduleName)}Overlay`));
 
         document.getElementById(`btnRefresh${capitalizar(moduleName)}`)?.addEventListener('click', () => this.load());
         document.getElementById(`search${capitalizar(moduleName)}`)?.addEventListener('input',      () => this._filter());

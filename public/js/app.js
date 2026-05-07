@@ -15,6 +15,8 @@
    datos sin repetir peticiones al servidor.
 ════════════════════════════════════════════ */
 const AppState = {
+    credentials: [],
+    worker: [],
     role:[],
     productos: [],
     marcas: [],
@@ -74,6 +76,8 @@ const DeleteModal = {
     open(type, id, name, onConfirm) {
         AppState.deleteTarget = {type, id, name, onConfirm};
         const msgs = {
+            credentials: `¿Eliminar la credencial "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
+            worker: `¿Eliminar el trabajador "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
             producto: `¿Eliminar el producto "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
             role: `¿Eliminar el Rol "<strong>${escapeHtml(name)}</strong>"? Esta acción no se puede deshacer.`,
             brand: `¿Eliminar la marca "<strong>${escapeHtml(name)}</strong>"? Solo se puede si no tiene productos asociados.`,
@@ -96,6 +100,8 @@ const DeleteModal = {
    BADGES DE SIDEBAR
 ════════════════════════════════════════════ */
 function updateBadges() {
+    setText('badge-credentials', AppState.credentials.length);
+    setText('badge-worker', AppState.worker.length);
     setText('badge-productos', AppState.productos.length);
     setText('badge-marcas', AppState.marcas.length);
     setText('badge-brands', AppState.brands.length);
