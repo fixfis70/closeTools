@@ -85,8 +85,8 @@
         <!-- botones -->
         <div class="modal-footer-custom">
             <button class="btn-cancel" id="btnClose@@-capName-@@">Cancel</button>
-            <button class="btn-save"   id="btnSave@@-capName-@@">
-                <span id="btnSave@@-capName-@@Text"><i class="bi bi-trash me-1"></i> Eliminar</span>
+            <button class="btn-danger-action"   id="btnSave@@-capName-@@">
+                <span id="btnSave@@-capName-@@Text"><i class="bi bi-trash me-1"></i> Terminar</span>
                 <span id="btnSave@@-capName-@@Spinner" class="d-none"><div class="spinner-sm"></div></span>
             </button>
         </div>
@@ -172,30 +172,33 @@
                     </div>
                     <div class="infotoolitem">
                         <label class="form-label-custom">Prestado para <span class="required">*</span></label>
-                        <input type="text" required class="input-custom" name="" id="toolSerial">
+                        <select class="input-custom" name="" id="toolSerial"></select>
                     </div>
                 </div>
                 <div class="taRazon">
                     <i class="bi-textarea">Razon del prestamo</i>
-                    <textarea disabled class="input-custom" name="" id="infotoolOOSReason" >Razon...</textarea>
+                    <textarea class="input-custom" name="" id="infotoolOOSReason" placeholder="Razon..."></textarea>
+                </div>
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-column  gap-2 align-items-start">
+                        <Span>Agregar herramienta</Span>
+                        <button class="btn-primary-action">+</button>
+
+                    </div>
+
                 </div>
                 <div class="infotoolitem">
                     <label class="form-label-custom">Herramientas<span class="required">*</span></label>
                     <div class="list-group">
-                        <div class="list-group-item">
-                            hols
-                        </div>
-                        <div class="list-group-item">
-                            hols
-                        </div>
-                        <div class="list-group-item">
-                            hols
-                        </div>
-                        <div class="list-group-item">
-                            hols
-                        </div>
-                        <div class="list-group-item">
-                            hols
+                        <div class="list-group-item d-flex justify-content-between">
+                            <div class="d-flex align-items-center gap-2">
+                                <span>Herramienta</span>
+                            </div>
+                            <div>
+                                <button class="btn-danger-action">
+                                    <i class="bi-trash"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
