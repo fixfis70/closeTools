@@ -12,12 +12,16 @@ const LoanModule = {
     },
 
     async load() {
-        document.getElementById('bodyMarcas').innerHTML =
+        document.getElementById('tabla-body').innerHTML =
             `<tr><td colspan="4" class="text-center py-5"><div class="spinner-custom"></div></td></tr>`;
 
         try {
-            const { data } = await http('/api/brand');
-            AppState.brands = data;
+            const [loans,fullTool_Loans] = await Promise.all([
+                http('/api/loan'),
+                http('/api/tool-loans'),
+            ]);
+            AppState.loan = loans.data;
+            AppState.loan_tool = fullTool_Loans.data;
             this._render(data);
             updateBadges();
         } catch (e) {
@@ -25,11 +29,12 @@ const LoanModule = {
         }
     },
 
-    _render(lista) {
-        setText('totalMarcasLabel', `${lista.length} marca(s) registrada(s)`);
-        const tbody = document.getElementById('bodyMarcas');
+    _render() {
+        const loans = AppState.loan
+        //setText('totalMarcasLabel', `${lista.length} marca(s) registrada(s)`);
+        const tbody = document.getElementById('tabla-body');
 
-        if (!lista.length) {
+        if (!loans.length) {
             tbody.innerHTML = `<tr><td colspan="4"><div class="empty-state">
         <i class="bi bi-bookmark-x"></i><p>No hay marcas registradas</p>
       </div></td></tr>`;
@@ -41,7 +46,7 @@ const LoanModule = {
             const total = AppState.productos.filter(p => p.id_brand == m.id_brand).length;
             return `
         <tr>
-          <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text-muted)">${String(i+1).padStart(2,'0')}</span></td>
+          <td><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--text-muted)">${String(i + 1).padStart(2, '0')}</span></td>
           <td>
             <div class="d-flex align-items-center gap-2">
               <div style="width:32px;height:32px;background:var(--primary-light);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--primary)">
@@ -95,36 +100,36 @@ const LoanModule = {
     },
 
     async _save() {
-        const id     = document.getElementById('marcaId').value;
+        const id = document.getElementById('marcaId').value;
         const nombre = document.getElementById('mNombre').value.trim();
         clearErrors(['mNombre']);
 
         if (!nombre) {
-            setError('mNombre','err-mNombre','El nombre de la marca es requerido');
+            setError('mNombre', 'err-mNombre', 'El nombre de la marca es requerido');
             return;
         }
 
         const isEdit = !!id;
-        setLoading('btnSaveMarca','btnSaveMarcaText','btnSaveMarcaSpinner', true);
+        setLoading('btnSaveMarca', 'btnSaveMarcaText', 'btnSaveMarcaSpinner', true);
         try {
-            await http(isEdit ? `/api/brand/${id}` : '/api/brand', isEdit ? 'PUT' : 'POST', { brand: nombre });
+            await http(isEdit ? `/api/brand/${id}` : '/api/brand', isEdit ? 'PUT' : 'POST', {brand: nombre});
             showToast(`Marca ${isEdit ? 'actualizada' : 'creada'} correctamente`, 'success');
             closeOverlay('modalMarcaOverlay');
             await this.load();
         } catch (e) {
             showToast(e.message, 'error');
         } finally {
-            setLoading('btnSaveMarca','btnSaveMarcaText','btnSaveMarcaSpinner', false);
+            setLoading('btnSaveMarca', 'btnSaveMarcaText', 'btnSaveMarcaSpinner', false);
         }
     },
 
     _bindEvents() {
-        document.getElementById('btnNuevaMarca')?.addEventListener('click',    () => this._openModal('new'));
-        document.getElementById('btnSaveMarca')?.addEventListener('click',     () => this._save());
-        document.getElementById('btnCancelMarca')?.addEventListener('click',   () => closeOverlay('modalMarcaOverlay'));
+        document.getElementById('btnNuevaMarca')?.addEventListener('click', () => this._openModal('new'));
+        document.getElementById('btnSaveMarca')?.addEventListener('click', () => this._save());
+        document.getElementById('btnCancelMarca')?.addEventListener('click', () => closeOverlay('modalMarcaOverlay'));
         document.getElementById('btnCloseModalMarca')?.addEventListener('click', () => closeOverlay('modalMarcaOverlay'));
         document.getElementById('btnRefreshMarcas')?.addEventListener('click', () => this.load());
-        document.getElementById('searchMarca')?.addEventListener('input',      () => this._filter());
+        document.getElementById('searchMarca')?.addEventListener('input', () => this._filter());
         document.getElementById('modalMarcaOverlay')?.addEventListener('click', e => {
             if (e.target.id === 'modalMarcaOverlay') closeOverlay('modalMarcaOverlay');
         });

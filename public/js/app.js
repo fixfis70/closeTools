@@ -15,6 +15,7 @@
    datos sin repetir peticiones al servidor.
 ════════════════════════════════════════════ */
 const AppState = {
+    loan_tool: [],
     loan:[],
     tool: [],
     locker: [],
