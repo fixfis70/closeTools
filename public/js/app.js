@@ -15,6 +15,7 @@
    datos sin repetir peticiones al servidor.
 ════════════════════════════════════════════ */
 const AppState = {
+    loan:[],
     tool: [],
     locker: [],
     receipt: [],
@@ -126,5 +127,5 @@ function updateBadges() {
 document.addEventListener('DOMContentLoaded', () => {
     DeleteModal.render();
     Router.init();
-    Router.navigateTo('dashboard');
+    Router.navigateTo('loan');
 });

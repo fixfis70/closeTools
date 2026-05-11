@@ -22,6 +22,12 @@
    Agregar aquí cada nueva vista.
 ════════════════════════════════════════════ */
 const ROUTES = {
+  loan: {
+    title:"Prestamos",
+    view: "/views/loan.html",
+    module: () => LoanModule,
+  },
+
   tool: {
     title: "Herramientas",
     view: "views/tool.html",

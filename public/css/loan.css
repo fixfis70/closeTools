@@ -1,0 +1,84 @@
+.prestamos {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    flex-grow: 1;
+    border-radius: 10px;
+}
+
+.tabla-componente {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.tabla-header{
+    background-color: var(--bs-primary);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 2px;
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+.tabla-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.boton-circulo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabla-body-item{
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.fila {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.fila1{
+    flex-grow: 6;
+}
+
+.fila2{
+    justify-content: center;
+    align-items: center;
+
+    flex-grow: 1;
+}
+
+.tbi-head{
+    padding: 5px;
+
+}
+
+.tbi-title{
+
+}
+
+.tbi-subtitle{
+    padding-left: 20px;
+    font-size: 8px;
+}
+

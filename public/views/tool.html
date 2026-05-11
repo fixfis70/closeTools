@@ -34,11 +34,10 @@
                 <th>Codigo inv.</th>
                 <th>estado</th>
                 <th>fuera de servicio:</th>
-                <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
-                <th>Name</th>
+                <th>precio</th>
+                <th>compra</th>
+                <th>Modelo</th>
+                <th>Almacen</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -69,16 +68,31 @@
         <div class="modal-body-custom">
             <!-- TODO formulario -->
             <form novalidate>
-                <input type="hidden" id="modelId"/>
+                <input type="hidden" id="toolId"/>
 
                 <label class="form-label-custom">Model name <span class="required">*</span></label>
-                <input type="text" required class="input-custom" name="" id="modelname">
+                <input type="text" required class="input-custom" name="" id="toolSerial">
 
-                <label class="form-label-custom">Model Type <span class="required">*</span></label>
-                <input type="text" required class="input-custom" name="" id="modelkind">
+                <label class="form-label-custom">Model name <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="toolInvCode">
 
-                <label class="form-label-custom">Brands ID <span class="required">*</span></label>
-                <input type="text" required class="input-custom" name="" id="modelbrandnid">
+                <label class="form-label-custom">Model name <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="toolState">
+
+                <label class="form-label-custom">Model name <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="toolOOSReason">
+
+                <label class="form-label-custom">Model name <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="toolCost">
+
+                <label class="form-label-custom">Model name <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="toolModelId">
+
+                <label class="form-label-custom">Model name <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="toolLockerId">
+
+                <label class="form-label-custom">Model name <span class="required">*</span></label>
+                <input type="text" required class="input-custom" name="" id="toolReceiptId">
 
                 <div class="field-error" id="err-mNombre"></div>
             </form>

@@ -65,18 +65,16 @@ const ModuleTool = {
                     <td><span>${escapeHtml(m.oos_reason)}</span></td>
                     <td><span>${escapeHtml(m.purchase_cost)}</span></td>
                     <td><span>${escapeHtml(m.purchase_date)}</span></td>
-                    <td><span>${escapeHtml(m.oss_responsable)}</span></td>
                     <td><span>${escapeHtml(m.model)}</span></td>
-                    <td><span>${escapeHtml(m.id_receipt)}</span></td>
                     <td><span>${escapeHtml(m.storage)}</span></td>
                     <!-- TODO data rows -->
 
                     <td>
                     <!-- TODO colocar el ID de la entidad -->
                     <button class="btn-action btn-action-edit"   
-                        onclick="q@ModelModule.openEdit(${m.id_model})"   title="Editar"><i class="bi bi-pencil-fill"></i></button>
+                        onclick="ModuleTool.openEdit(${m.id_tool})"   title="Editar"><i class="bi bi-pencil-fill"></i></button>
                     <button class="btn-action btn-action-delete" 
-                        onclick="q@ModelModule.confirmDel(${m.id_model},'${escapeHtml(m.q@name)}')" title="Eliminar"><i class="bi bi-trash3-fill"></i></button>
+                        onclick="ModuleTool.confirmDel(${m.id_tool},'${escapeHtml(m.inv_code)}')" title="Eliminar"><i class="bi bi-trash3-fill"></i></button>
                     </td>                    
                 </tr>
             `
@@ -87,11 +85,12 @@ const ModuleTool = {
         const search = document.getElementById(`search${capitalizar(moduleTool)}`)?.value.toLowerCase() || '';
         console.log(search)
         //TODO filtro, CAMBIAR EL CACHE
-        this._render(AppState.q@models.filter(m =>
+        this._render(AppState.tool.filter(m =>
             // m -> valor que nos dan
             // search -> valor que buscamos
-            m.q@model.toLowerCase().includes(search)
-        ));
+            m.inv_code.toLowerCase().includes(search)
+        ))
+        ;
     },
     // obj = {model: "hola"}
     // _openModal(edit,obj}) {}
@@ -100,19 +99,32 @@ const ModuleTool = {
         const isEdit = mode === 'edit';
         setText(`modal${capitalizar(moduleTool)}Title`, isEdit ? `Editar ${moduleTool}` : `Nueva ${moduleTool}`);
         // TODO obtener los datos por el ID del MODAL (HTML)
-        document.getElementById('modelId').value = isEdit ? entidad.id_model : '';
-        document.getElementById('modelname').value = isEdit ? entidad.model : '';
-        document.getElementById('modelkind').value = isEdit ? entidad.kind_of_tool : '';
-        document.getElementById('modelbrandnid').value = isEdit ? entidad.id_brand : '';
-        clearErrors(['modelname']);
-        clearErrors(['modelkind']);
-        clearErrors(['modelbrandnid']);
+        document.getElementById('toolId').value = isEdit ? entidad.id_tool : '';
+        document.getElementById('toolSerial').value = isEdit ? entidad.serial : '';
+        document.getElementById('toolInvCode').value = isEdit ? entidad.inv_code : '';
+        document.getElementById('toolState').value = isEdit ? entidad.state : '';
+        document.getElementById('toolOOSReason').value = isEdit ? entidad.oos_reason : '';
+        document.getElementById('toolCost').value = isEdit ? entidad.purchase_cost : '';
+        document.getElementById('toolModelId').value = isEdit ? entidad.id_model : '';
+        document.getElementById('toolLockerId').value = isEdit ? entidad.id_receipt : '';
+        document.getElementById('toolReceiptId').value = isEdit ? entidad.id_storage : '';
+        clearErrors(['toolSerial']);
+        clearErrors(['toolInvCode']);
+        clearErrors(['toolState']);
+        clearErrors(['toolOOSReason']);
+        clearErrors(['toolCost']);
+        clearErrors(['toolModelId']);
+        clearErrors(['toolLockerId']);
+        clearErrors(['toolReceiptId']);
 
         openOverlay(`modal${capitalizar(moduleTool)}Overlay`);
     },
 
     openEdit(id) {
-        const value = AppState.q@models.find(m => m.q@id_model === id);
+        const value = AppState.tool.find(m =>
+                m.id_tool === id
+            )
+        ;
         if (!value) return showToast(`${capitalizar(moduleTool)} no encontrada`, 'error');
         this._openModal('edit', value);
     },
@@ -132,16 +144,25 @@ const ModuleTool = {
 
     async _save() {
         //TODO recuperar los datos del MODAL (HTML)
-        const id = document.getElementById('modelId').value;
-        const nombre = document.getElementById('modelname').value.trim();
-        const marca = document.getElementById('modelbrandnid').value.trim();
-        const tipo = document.getElementById('modelkind').value.trim();
+        const id = document.getElementById('toolId').value;
+        const serie = document.getElementById('toolSerial').value.trim();
+        const invcode = document.getElementById('toolInvCode').value.trim();
+        const state = document.getElementById('toolState').value.trim();
+        const oosreason = document.getElementById('toolOOSReason').value.trim();
+        const cost = document.getElementById('toolCost').value.trim();
+        const toolmodel = document.getElementById('toolModelId').value.trim();
+        const toollocker = document.getElementById('toolLockerId').value.trim();
+        const toolsreceipt = document.getElementById('toolReceiptId').value.trim();
         //TODO recuperar los datos del MODAL (HTML)
 
         const isEdit = !!id
         try {
             //TODO enviar los datos al servidor
-            const data = {model: nombre, kind_of_tool: tipo, id_brand: marca}
+            const data = {
+                serial: serie, inv_code: invcode, state: state, oos_reason: oosreason,
+                purchase_cost: cost, purchase_date: null,
+                oss_responsable: null, id_model: toolmodel, id_receipt: toolsreceipt, id_storage: toollocker
+            }
             //TODO enviar los datos al servidor
 
             const url = isEdit ? `/api/${moduleTool}/${id}` : `/api/${moduleTool}`
@@ -162,7 +183,7 @@ const ModuleTool = {
         document.getElementById(`btnCloseModal${capitalizar(moduleTool)}`)?.addEventListener('click', () => closeOverlay(`modal${capitalizar(moduleTool)}Overlay`));
 
         document.getElementById(`btnRefresh${capitalizar(moduleTool)}`)?.addEventListener('click', () => this.load());
-        document.getElementById(`search${capitalizar(moduleTool)}`)?.addEventListener('input',      () => this._filter());
+        document.getElementById(`search${capitalizar(moduleTool)}`)?.addEventListener('input', () => this._filter());
 
     },
 }
