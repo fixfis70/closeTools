@@ -6,10 +6,11 @@ const { db } = require('../db/db');
 router.get('/', async (req, res) => {
     try {
         const [rows] = await db.query(`
-            SELECT tl.*, t.serial, l.id_loan
+            SELECT tl.*, t.*, l.*, m.*
             FROM tools_loans tl
             JOIN tools t ON tl.id_tool = t.id_tool
             JOIN loans l ON tl.id_loan = l.id_loan
+            join models m on t.id_model = m.id_model
         `);
 
         res.json({ success: true, data: rows });

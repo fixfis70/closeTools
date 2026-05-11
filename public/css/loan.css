@@ -12,9 +12,26 @@
     flex-direction: column;
     border-radius: 10px;
 }
-
+.tabla-header-item{
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+}
+.search-bar{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+}
+.search-bar input{
+    height: 30px;
+    max-width: 200px;
+}
 .tabla-header{
-    background-color: var(--bs-primary);
+    background-color: var(--primary);
     color: white;
     display: flex;
     flex-direction: column;
@@ -35,19 +52,35 @@
     height: 50px;
     border-radius: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 .tabla-body-item{
     border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
 
+    background: var(--surface);
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     gap: 2px;
     border-radius: 10px;
-    padding: 2px;
+
+    justify-content: center ;
+    align-items: center;
 }
+
+.tabla-body-item:hover{
+    transition: all .2s;
+
+    transform: scale(1.02);
+
+    z-index: 1000;
+    cursor: pointer;
+
+    background-color: var(--surface-2);
+
+}
+
 
 .fila {
     display: flex;
@@ -62,14 +95,26 @@
 }
 
 .fila2{
-    justify-content: center;
+    justify-content: center ;
     align-items: center;
 
-    flex-grow: 1;
+    flex-grow: 0;
 }
-
+.tbi {
+    justify-content: center ;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-radius: 10px;
+    padding: 2px;
+}
 .tbi-head{
-    padding: 5px;
+    flex-grow: 1;
+    background: var(--primary);
+    color: white;
+    border-radius: 10px 2px  2px 10px;
+
 
 }
 
@@ -78,7 +123,65 @@
 }
 
 .tbi-subtitle{
-    padding-left: 20px;
-    font-size: 8px;
+    font-size: 10px;
 }
 
+.tbi-body{
+    flex-grow: 3;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.tbi-foot{
+    flex-direction: row;
+    height: 100%;
+    flex-grow: 1;
+    background: var(--primary-light);
+    border-radius: 2px 10px  10px 2px;
+}
+
+.taRazon{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2px;
+}
+.item-badge {
+    background: rgba(99,102,241,.3);
+    color: #8ea4ff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+}
+
+.infotoolcolumn{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.infoList {
+    width: 100%;
+    height: 100%;
+}
+
+.infotoolrow{
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+.infotoolitem{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0;
+}
+
+.list-group-item:hover{
+    transition: all .2s;
+    transform: scale(1.02);
+    cursor: pointer;
+}

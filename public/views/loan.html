@@ -1,6 +1,10 @@
 <div class="page-header">
     <div>
         <h1 class="page-title">Crear un prestamo</h1>
+        <div class="fila2">
+            <button class="btn-primary-action boton-circulo">+</button>
+
+        </div>
     </div>
 </div>
 
@@ -8,48 +12,204 @@
     <div class="border gap-2 fila1 fila">
 
         <div class="tabla-componente">
+            <!-- Header -->
             <div class="border tabla-header">
                 <div class="tabla-header-item">
-                    <div class="tabla-header-item-title">Prestamos</div>
+                    <div class="tabla-header-item-title flex-grow-1">Prestamos</div>
+                    <div class="search-bar flex-grow-1">
+                        <!-- Search bar -->
+                        <i class="bi bi-search"></i>
+                        <input type="text" required class="input-custom" name="" placeholder="Buscar...">
+                    </div>
+
                 </div>
             </div>
             <div class="tabla-body">
+                <!-- Esto es un item -->
                 <div class="tabla-body-item">
-                    <div class="tabla-body-item-title">
+                    <!-- Parte de la izquierda -->
+                    <div class="tbi-head tbi">
+                        <div class="tbi-title">
+                            Por
+                        </div>
+                        <div class="tbi-subtitle">
+                            Codigo inv
+                        </div>
+                    </div>
 
-                        <div class="tbi-head">
-                            <div class="tbi-title">
-                                Modelo
-                            </div>
+                    <!-- Medio -->
+                    <div class="tbi-body tbi">
+                        <div>
+                            <div class="tbi-title">Para</div>
                             <div class="tbi-subtitle">
-                                Codigo inv
+                                fecha
                             </div>
                         </div>
+                    </div>
 
-
-
+                    <!-- badge  -->
+                    <div class="tbi-foot tbi">
+                        <div class="item-badge">
+                            <i class="bi bi-tools"></i>
+                            <span>1</span>
+                        </div>
                     </div>
                 </div>
-                <div class="tabla-body-item">
-                    <div class="tabla-body-item-title">
+            </div>
+        </div>
+    </div>
+</div>
 
-                        BRO
+//modal termianr prestamo
+<div class="!modal-overlay">
+    <div class="modal-panel modal-sm">
+        <div class="modal-header-custom">
+            <div>
+                <!-- encabezado -->
+                <div class="modal-title-custom" id="modal@@-capName-@@Title">Terminar Prestamo</div>
+                <div class="modal-subtitle">Terminar este prestamo!</div>
+            </div>
+            <button class="btn-modal-close" id="btnCloseModal@@-capName-@@"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body-custom">
+            <!-- TODO formulario -->
+            <div>
+                <span>
+                    Esta seguro que desea terminar este prestamo? la fecha del fin de prestamo será hoydia
+                </span>
+            </div>
 
+
+        </div>
+
+        <!-- botones -->
+        <div class="modal-footer-custom">
+            <button class="btn-cancel" id="btnClose@@-capName-@@">Cancel</button>
+            <button class="btn-save"   id="btnSave@@-capName-@@">
+                <span id="btnSave@@-capName-@@Text"><i class="bi bi-trash me-1"></i> Eliminar</span>
+                <span id="btnSave@@-capName-@@Spinner" class="d-none"><div class="spinner-sm"></div></span>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+//modal de acciones
+<div class="!modal-overlay">
+    <div class="modal-panel modal-sm">
+        <div class="modal-header-custom">
+            <div>
+                <!-- encabezado -->
+                <div class="modal-title-custom">Informacion del prestamo</div>
+                <div class="modal-subtitle">Ver informacion del prestamo seleccionado</div>
+            </div>
+            <button class="btn-modal-close" id="btnCloseModal@@-capName-@@"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body-custom">
+            <div class="infotoolcolumn">
+                <div class="infotoolrow">
+                    <div class="infotoolitem">
+                        <label class="form-label-custom">Prestado por <span class="required">*</span></label>
+                        <input type="text" required class="input-custom" name="" id="toolSerial">
+                    </div>
+                    <div class="infotoolitem">
+                        <label class="form-label-custom">Prestado para <span class="required">*</span></label>
+                        <input type="text" required class="input-custom" name="" id="toolSerial">
                     </div>
                 </div>
-                <div class="tabla-body-item">
-                    <div class="tabla-body-item-title">
-
-                        BRO
-
+                <div class="taRazon">
+                    <i class="bi-textarea">Razon del prestamo</i>
+                    <textarea disabled class="input-custom" name="" id="infotoolOOSReason" >Razon...</textarea>
+                </div>
+                <div class="infotoolitem">
+                    <label class="form-label-custom">Herramientas<span class="required">*</span></label>
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            hols
+                        </div>
+                        <div class="list-group-item">
+                            hols
+                        </div>
+                        <div class="list-group-item">
+                            hols
+                        </div>
+                        <div class="list-group-item">
+                            hols
+                        </div>
+                        <div class="list-group-item">
+                            hols
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- botones -->
+        <div class="modal-footer-custom">
+            <button class="btn-cancel" id="btnClose@@-capName-@@">Cancel</button>
+        </div>
     </div>
-    <div class="border gap-2  fila2 fila">
-        <button class="btn-primary-action boton-circulo">+</button>
 
+</div>
+
+//modal de creacion
+<div class="!modal-overlay">
+    <div class="modal-panel modal-sm">
+        <div class="modal-header-custom">
+            <div>
+                <!-- encabezado -->
+                <div class="modal-title-custom" id="modal@@-capName-@@Title">New @@-capName-@@</div>
+                <div class="modal-subtitle">Insert the @@-name-@@ name</div>
+            </div>
+            <button class="btn-modal-close" id="btnCloseModal@@-capName-@@"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body-custom">
+            <div class="infotoolcolumn">
+                <div class="infotoolrow">
+                    <div class="infotoolitem">
+                        <label class="form-label-custom">Prestado por <span class="required">*</span></label>
+                        <select class="input-custom" name="" id="toolSerial"></select>
+                    </div>
+                    <div class="infotoolitem">
+                        <label class="form-label-custom">Prestado para <span class="required">*</span></label>
+                        <input type="text" required class="input-custom" name="" id="toolSerial">
+                    </div>
+                </div>
+                <div class="taRazon">
+                    <i class="bi-textarea">Razon del prestamo</i>
+                    <textarea disabled class="input-custom" name="" id="infotoolOOSReason" >Razon...</textarea>
+                </div>
+                <div class="infotoolitem">
+                    <label class="form-label-custom">Herramientas<span class="required">*</span></label>
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            hols
+                        </div>
+                        <div class="list-group-item">
+                            hols
+                        </div>
+                        <div class="list-group-item">
+                            hols
+                        </div>
+                        <div class="list-group-item">
+                            hols
+                        </div>
+                        <div class="list-group-item">
+                            hols
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- botones -->
+        <div class="modal-footer-custom">
+            <button class="btn-cancel" id="btnClose@@-capName-@@">Cancel</button>
+            <button class="btn-save"   id="btnSave@@-capName-@@">
+                <span id="btnSave@@-capName-@@Text"><i class="bi bi-check-lg me-1"></i> Save</span>
+                <span id="btnSave@@-capName-@@Spinner" class="d-none"><div class="spinner-sm"></div></span>
+            </button>
+        </div>
     </div>
+
 </div>
